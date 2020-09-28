@@ -1,7 +1,7 @@
 var async = require('async');
 var couch = require('./couchdb');
 
-var databases = ['users'];
+var databases = ['users','posts'];
 
 function initCouch(cb){
     createDatabases(cb);

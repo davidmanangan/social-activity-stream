@@ -13,9 +13,8 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/new',function(req,res,next){
-  console.log(req.body)
   if(req.body && req.body.email){
-    users.insert(req.body);
+    users.insert(req.body,next);
     let responseObj = {
       action: "user inserted",
       status:"OK"
