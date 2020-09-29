@@ -1,10 +1,12 @@
 var async = require('async');
 var couch = require('./couchdb');
+var views = require('./views');
 
 var databases = ['users','posts'];
 
 function initCouch(cb){
-    createDatabases(cb);
+    //createDatabases(cb);
+    async.series([createDatabases,createViews],cb);
 }
 
 function createDatabases(cb){
@@ -18,6 +20,10 @@ function createDatabase(db,cb){
         }
         cb(err);
     })
+}
+
+function createViews(cb){
+    views.populate(cb);
 }
 
 module.exports = initCouch
